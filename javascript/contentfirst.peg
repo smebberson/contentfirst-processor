@@ -1,0 +1,33 @@
+grammar ContentFirst
+
+	document				<-	(doctype / text / excludeTag / genericTag)*
+
+	excludeTag 				<-	excludeOpenTag (text / genericTag)* excludeCloseTag
+
+	excludeOpenTag			<-	"<ef" space platformAttribute? space ">"
+
+	excludeCloseTag			<-	"</ef>"
+
+	genericTag				<-	openTag (text / genericTag / excludeTag)* closeTag
+
+	openTag 				<-	"<" !"ef" name attributeList ">"
+
+	closeTag 				<- 	"</" !"ef" [a-zA-Z0-9]+ ">"
+
+	platformAttribute		<-	"platform=\"" platformAttributeCon "\""
+
+	platformAttributeCon	<-	[a-zA-Z,]+
+
+	attributeList			<-	attribute*
+
+	attribute 				<-	[\s]+ name "=" quotedValue
+
+	name					<-	[A-Za-z0-9]+
+
+	quotedValue				<-	"\"" [^"]* "\""
+
+	space					<- 	[ ]*
+
+	text					<-	[^<]+
+
+	doctype					<-	"<!DOCTYPE " [a-zA-Z0-9]+ ">"
