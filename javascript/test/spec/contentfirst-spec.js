@@ -46,6 +46,13 @@ describe('content first', function () {
 
 				});
 
+				it("with an exclude tag (context attribute, knownuser)", function() {
+				  
+					html = getEl('basic-with-exclude-context-knownuser');
+					expect(parser).not.toThrow();
+
+				});
+
 				it("with an include tag (platform attribute, mobile)", function() {
 				  
 					html = getEl('basic-with-include-platform-mobile');

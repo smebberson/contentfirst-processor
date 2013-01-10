@@ -4,7 +4,7 @@ grammar ContentFirst
 
 	excludeTag 				<-	excludeOpenTag (text / genericTag)* excludeCloseTag
 
-	excludeOpenTag			<-	"<ef" space platformAttribute? space ">"
+	excludeOpenTag			<-	"<ef" space platformAttribute? contextAttribute? space ">"
 
 	excludeCloseTag			<-	"</ef>"
 
@@ -20,9 +20,11 @@ grammar ContentFirst
 
 	closeTag 				<- 	"</" !("ef" / "ii") [a-zA-Z0-9]+ ">"
 
-	platformAttribute		<-	"platform=\"" platformAttributeCon "\""
+	contextAttribute		<-	"context=\"" attributeContent "\""
 
-	platformAttributeCon	<-	[a-zA-Z,]+
+	platformAttribute		<-	"platform=\"" attributeContent "\""
+
+	attributeContent		<-	[a-zA-Z,]+
 
 	attributeList			<-	attribute*
 
