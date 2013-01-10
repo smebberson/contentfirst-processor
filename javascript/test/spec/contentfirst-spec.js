@@ -79,6 +79,13 @@ describe('content first', function () {
 						expect(parser).not.toThrow();
 
 					});
+
+					it("with a platform attribute and a context attribute", function() {
+					  
+						html = getEl('basic-with-include-platform-mobile-context-knownuser');
+						expect(parser).not.toThrow();
+
+					});
 				  
 				});
 			  
