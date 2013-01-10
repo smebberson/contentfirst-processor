@@ -10,7 +10,7 @@ grammar ContentFirst
 
 	includeTag				<-	includeOpenTag (text / genericTag)* includeCloseTag
 
-	includeOpenTag			<-	"<ii" space platformAttribute? space ">"
+	includeOpenTag			<-	"<ii" space platformAttribute? contextAttribute? space ">"
 
 	includeCloseTag			<-	"</ii>"
 

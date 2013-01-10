@@ -59,6 +59,13 @@ describe('content first', function () {
 					expect(parser).not.toThrow();
 
 				});
+
+				it("with an include tag (context attribute, knownuser)", function() {
+				  
+					html = getEl('basic-with-include-context-knownuser');
+					expect(parser).not.toThrow();
+
+				});
 			  
 			});
 

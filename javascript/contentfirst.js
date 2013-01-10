@@ -515,41 +515,62 @@
             elements0.push(address3);
             text0 += address3.textValue;
             var address4 = null;
-            address4 = this.__consume__space();
+            var index3 = this._offset;
+            address4 = this.__consume__contextAttribute();
+            if (address4) {
+            } else {
+              this._offset = index3;
+              var klass2 = this.constructor.SyntaxNode;
+              var type2 = null;
+              address4 = new klass2("", this._offset, []);
+              if (typeof type2 === "object") {
+                extend(address4, type2);
+              }
+              this._offset += 0;
+            }
             if (address4) {
               elements0.push(address4);
               text0 += address4.textValue;
-              labelled0.space = address4;
               var address5 = null;
-              var slice2 = null;
-              if (this._input.length > this._offset) {
-                slice2 = this._input.substring(this._offset, this._offset + 1);
-              } else {
-                slice2 = null;
-              }
-              if (slice2 === ">") {
-                var klass2 = this.constructor.SyntaxNode;
-                var type2 = null;
-                address5 = new klass2(">", this._offset, []);
-                if (typeof type2 === "object") {
-                  extend(address5, type2);
-                }
-                this._offset += 1;
-              } else {
-                address5 = null;
-                var slice3 = null;
-                if (this._input.length > this._offset) {
-                  slice3 = this._input.substring(this._offset, this._offset + 1);
-                } else {
-                  slice3 = null;
-                }
-                if (!this.error || this.error.offset <= this._offset) {
-                  this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\">\""};
-                }
-              }
+              address5 = this.__consume__space();
               if (address5) {
                 elements0.push(address5);
                 text0 += address5.textValue;
+                labelled0.space = address5;
+                var address6 = null;
+                var slice2 = null;
+                if (this._input.length > this._offset) {
+                  slice2 = this._input.substring(this._offset, this._offset + 1);
+                } else {
+                  slice2 = null;
+                }
+                if (slice2 === ">") {
+                  var klass3 = this.constructor.SyntaxNode;
+                  var type3 = null;
+                  address6 = new klass3(">", this._offset, []);
+                  if (typeof type3 === "object") {
+                    extend(address6, type3);
+                  }
+                  this._offset += 1;
+                } else {
+                  address6 = null;
+                  var slice3 = null;
+                  if (this._input.length > this._offset) {
+                    slice3 = this._input.substring(this._offset, this._offset + 1);
+                  } else {
+                    slice3 = null;
+                  }
+                  if (!this.error || this.error.offset <= this._offset) {
+                    this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\">\""};
+                  }
+                }
+                if (address6) {
+                  elements0.push(address6);
+                  text0 += address6.textValue;
+                } else {
+                  elements0 = null;
+                  this._offset = index1;
+                }
               } else {
                 elements0 = null;
                 this._offset = index1;
@@ -572,11 +593,11 @@
       }
       if (elements0) {
         this._offset = index1;
-        var klass3 = this.constructor.SyntaxNode;
-        var type3 = null;
-        address0 = new klass3(text0, this._offset, elements0, labelled0);
-        if (typeof type3 === "object") {
-          extend(address0, type3);
+        var klass4 = this.constructor.SyntaxNode;
+        var type4 = null;
+        address0 = new klass4(text0, this._offset, elements0, labelled0);
+        if (typeof type4 === "object") {
+          extend(address0, type4);
         }
         this._offset += text0.length;
       } else {
