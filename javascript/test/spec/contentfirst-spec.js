@@ -39,32 +39,40 @@ describe('content first', function () {
 
 				});
 
-				it("with an exclude tag (platform attribute, mobile)", function() {
-				  
-					html = getEl('basic-with-exclude-platform-mobile');
-					expect(parser).not.toThrow();
+				describe("with an exclude tag", function() {
+
+					it("with a platform attribute of mobile", function() {
+					  
+						html = getEl('basic-with-exclude-platform-mobile');
+						expect(parser).not.toThrow();
+
+					});
+
+					it("with a context attribute of knownuser", function() {
+					  
+						html = getEl('basic-with-exclude-context-knownuser');
+						expect(parser).not.toThrow();
+
+					});
 
 				});
 
-				it("with an exclude tag (context attribute, knownuser)", function() {
+				describe("with an include tag", function() {
+
+					it("with a platform attribute of mobile", function() {
+					  
+						html = getEl('basic-with-include-platform-mobile');
+						expect(parser).not.toThrow();
+
+					});
+
+					it("with a context attribute of knownuser", function() {
+					  
+						html = getEl('basic-with-include-context-knownuser');
+						expect(parser).not.toThrow();
+
+					});
 				  
-					html = getEl('basic-with-exclude-context-knownuser');
-					expect(parser).not.toThrow();
-
-				});
-
-				it("with an include tag (platform attribute, mobile)", function() {
-				  
-					html = getEl('basic-with-include-platform-mobile');
-					expect(parser).not.toThrow();
-
-				});
-
-				it("with an include tag (context attribute, knownuser)", function() {
-				  
-					html = getEl('basic-with-include-context-knownuser');
-					expect(parser).not.toThrow();
-
 				});
 			  
 			});
