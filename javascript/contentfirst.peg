@@ -1,6 +1,6 @@
 grammar ContentFirst
 
-	document				<-	(doctype / text / excludeTag / genericTag)*
+	document				<-	(doctype / text / excludeTag / includeTag / genericTag)*
 
 	excludeTag 				<-	excludeOpenTag (text / genericTag)* excludeCloseTag
 
@@ -8,11 +8,17 @@ grammar ContentFirst
 
 	excludeCloseTag			<-	"</ef>"
 
-	genericTag				<-	openTag (text / genericTag / excludeTag)* closeTag
+	includeTag				<-	includeOpenTag (text / genericTag)* includeCloseTag
 
-	openTag 				<-	"<" !"ef" name attributeList ">"
+	includeOpenTag			<-	"<ii" space platformAttribute? space ">"
 
-	closeTag 				<- 	"</" !"ef" [a-zA-Z0-9]+ ">"
+	includeCloseTag			<-	"</ii>"
+
+	genericTag				<-	openTag (text / genericTag / excludeTag / includeTag)* closeTag
+
+	openTag 				<-	"<" !("ef" / "ii") name attributeList ">"
+
+	closeTag 				<- 	"</" !("ef" / "ii") [a-zA-Z0-9]+ ">"
 
 	platformAttribute		<-	"platform=\"" platformAttributeCon "\""
 

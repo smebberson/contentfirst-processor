@@ -45,6 +45,13 @@ describe('content first', function () {
 					expect(parser).not.toThrow();
 
 				});
+
+				it("with an include tag (platform attribute, mobile)", function() {
+				  
+					html = getEl('basic-with-include-platform-mobile');
+					expect(parser).not.toThrow();
+
+				});
 			  
 			});
 

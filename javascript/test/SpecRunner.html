@@ -45,7 +45,7 @@
   </script>
 
   <!--
-  -  Sources for HTML
+  -  Test sources for HTML
   -->
 
   <!-- basic-one-line-without-doctype -->
@@ -85,8 +85,21 @@
   </html>
   </script>
 
+  <!-- with include tag (platform attribute) -->
+  <script id="basic-with-include-platform-mobile" type="text/html">
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>html title</title>
+    </head>
+    <body>
+    <h1>body title</h1><ii platform="mobile">Mobile included content.</ii><p>All platform content.</p>
+    </body>
+  </html>
+  </script>
+
   <!--
-  - Sources for Text
+  - Test sources for Text
   -->
 
   <script id="basic-text-one-line" type="text/html">
