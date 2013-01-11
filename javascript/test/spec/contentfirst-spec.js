@@ -62,6 +62,13 @@ describe('content first', function () {
 					  
 					});
 
+					it("with a context attribute and a platform attribute", function() {
+					  
+						html = getEl('basic-with-exclude-context-knownuser-platform-mobile');
+						expect(parser).not.toThrow();
+					  
+					});
+
 				});
 
 				describe("with an include tag", function() {

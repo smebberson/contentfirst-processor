@@ -221,103 +221,41 @@
         elements0.push(address1);
         text0 += address1.textValue;
         var address2 = null;
-        address2 = this.__consume__space();
+        address2 = this.__consume__cfAttributeList();
         if (address2) {
           elements0.push(address2);
           text0 += address2.textValue;
-          labelled0.space = address2;
+          labelled0.cfAttributeList = address2;
           var address3 = null;
-          var index2 = this._offset;
-          address3 = this.__consume__platformAttribute();
-          if (address3) {
+          var slice2 = null;
+          if (this._input.length > this._offset) {
+            slice2 = this._input.substring(this._offset, this._offset + 1);
           } else {
-            this._offset = index2;
+            slice2 = null;
+          }
+          if (slice2 === ">") {
             var klass1 = this.constructor.SyntaxNode;
             var type1 = null;
-            address3 = new klass1("", this._offset, []);
+            address3 = new klass1(">", this._offset, []);
             if (typeof type1 === "object") {
               extend(address3, type1);
             }
-            this._offset += 0;
+            this._offset += 1;
+          } else {
+            address3 = null;
+            var slice3 = null;
+            if (this._input.length > this._offset) {
+              slice3 = this._input.substring(this._offset, this._offset + 1);
+            } else {
+              slice3 = null;
+            }
+            if (!this.error || this.error.offset <= this._offset) {
+              this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\">\""};
+            }
           }
           if (address3) {
             elements0.push(address3);
             text0 += address3.textValue;
-            var address4 = null;
-            address4 = this.__consume__space();
-            if (address4) {
-              elements0.push(address4);
-              text0 += address4.textValue;
-              labelled0.space = address4;
-              var address5 = null;
-              var index3 = this._offset;
-              address5 = this.__consume__contextAttribute();
-              if (address5) {
-              } else {
-                this._offset = index3;
-                var klass2 = this.constructor.SyntaxNode;
-                var type2 = null;
-                address5 = new klass2("", this._offset, []);
-                if (typeof type2 === "object") {
-                  extend(address5, type2);
-                }
-                this._offset += 0;
-              }
-              if (address5) {
-                elements0.push(address5);
-                text0 += address5.textValue;
-                var address6 = null;
-                address6 = this.__consume__space();
-                if (address6) {
-                  elements0.push(address6);
-                  text0 += address6.textValue;
-                  labelled0.space = address6;
-                  var address7 = null;
-                  var slice2 = null;
-                  if (this._input.length > this._offset) {
-                    slice2 = this._input.substring(this._offset, this._offset + 1);
-                  } else {
-                    slice2 = null;
-                  }
-                  if (slice2 === ">") {
-                    var klass3 = this.constructor.SyntaxNode;
-                    var type3 = null;
-                    address7 = new klass3(">", this._offset, []);
-                    if (typeof type3 === "object") {
-                      extend(address7, type3);
-                    }
-                    this._offset += 1;
-                  } else {
-                    address7 = null;
-                    var slice3 = null;
-                    if (this._input.length > this._offset) {
-                      slice3 = this._input.substring(this._offset, this._offset + 1);
-                    } else {
-                      slice3 = null;
-                    }
-                    if (!this.error || this.error.offset <= this._offset) {
-                      this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\">\""};
-                    }
-                  }
-                  if (address7) {
-                    elements0.push(address7);
-                    text0 += address7.textValue;
-                  } else {
-                    elements0 = null;
-                    this._offset = index1;
-                  }
-                } else {
-                  elements0 = null;
-                  this._offset = index1;
-                }
-              } else {
-                elements0 = null;
-                this._offset = index1;
-              }
-            } else {
-              elements0 = null;
-              this._offset = index1;
-            }
           } else {
             elements0 = null;
             this._offset = index1;
@@ -332,11 +270,11 @@
       }
       if (elements0) {
         this._offset = index1;
-        var klass4 = this.constructor.SyntaxNode;
-        var type4 = null;
-        address0 = new klass4(text0, this._offset, elements0, labelled0);
-        if (typeof type4 === "object") {
-          extend(address0, type4);
+        var klass2 = this.constructor.SyntaxNode;
+        var type2 = null;
+        address0 = new klass2(text0, this._offset, elements0, labelled0);
+        if (typeof type2 === "object") {
+          extend(address0, type2);
         }
         this._offset += text0.length;
       } else {
@@ -660,6 +598,79 @@
         }
       }
       return this._nodeCache["includeCloseTag"][index0] = address0;
+    },
+    __consume__cfAttributeList: function(input) {
+      var address0 = null, index0 = this._offset;
+      this._nodeCache["cfAttributeList"] = this._nodeCache["cfAttributeList"] || {};
+      var cached = this._nodeCache["cfAttributeList"][index0];
+      if (cached) {
+        this._offset += cached.textValue.length;
+        return cached;
+      }
+      var index1 = this._offset, elements0 = [], labelled0 = {}, text0 = "";
+      var address1 = null;
+      address1 = this.__consume__space();
+      if (address1) {
+        elements0.push(address1);
+        text0 += address1.textValue;
+        labelled0.space = address1;
+        var address2 = null;
+        var index2 = this._offset;
+        address2 = this.__consume__contextAttribute();
+        if (address2) {
+        } else {
+          this._offset = index2;
+          address2 = this.__consume__platformAttribute();
+          if (address2) {
+          } else {
+            this._offset = index2;
+          }
+        }
+        if (address2) {
+          elements0.push(address2);
+          text0 += address2.textValue;
+          var address3 = null;
+          var index3 = this._offset;
+          address3 = this.__consume__cfAttributeList();
+          if (address3) {
+          } else {
+            this._offset = index3;
+            var klass0 = this.constructor.SyntaxNode;
+            var type0 = null;
+            address3 = new klass0("", this._offset, []);
+            if (typeof type0 === "object") {
+              extend(address3, type0);
+            }
+            this._offset += 0;
+          }
+          if (address3) {
+            elements0.push(address3);
+            text0 += address3.textValue;
+          } else {
+            elements0 = null;
+            this._offset = index1;
+          }
+        } else {
+          elements0 = null;
+          this._offset = index1;
+        }
+      } else {
+        elements0 = null;
+        this._offset = index1;
+      }
+      if (elements0) {
+        this._offset = index1;
+        var klass1 = this.constructor.SyntaxNode;
+        var type1 = null;
+        address0 = new klass1(text0, this._offset, elements0, labelled0);
+        if (typeof type1 === "object") {
+          extend(address0, type1);
+        }
+        this._offset += text0.length;
+      } else {
+        address0 = null;
+      }
+      return this._nodeCache["cfAttributeList"][index0] = address0;
     },
     __consume__genericTag: function(input) {
       var address0 = null, index0 = this._offset;

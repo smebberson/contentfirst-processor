@@ -4,7 +4,7 @@ grammar ContentFirst
 
 	excludeTag 				<-	excludeOpenTag (text / genericTag)* excludeCloseTag
 
-	excludeOpenTag			<-	"<ef" space platformAttribute? space contextAttribute? space ">"
+	excludeOpenTag			<-	"<ef" cfAttributeList ">"
 
 	excludeCloseTag			<-	"</ef>"
 
@@ -13,6 +13,8 @@ grammar ContentFirst
 	includeOpenTag			<-	"<ii" space platformAttribute? space contextAttribute? space ">"
 
 	includeCloseTag			<-	"</ii>"
+
+	cfAttributeList			<-	space (contextAttribute / platformAttribute) cfAttributeList?
 
 	genericTag				<-	openTag (text / genericTag / excludeTag / includeTag)* closeTag
 
